@@ -3,25 +3,25 @@ import styles from './Navigation.module.css';
 
 const Navigation = () => (
   <nav>
-    <ul>
+    <ul className={styles.list}>
       <li>
         <NavLink
           exact="true"
           to="/"
           className={styles.link}
-          // activeclassname={styles.activeLink}
+          // activeClassName={styles.activeLink}
         >
           Home
         </NavLink>
       </li>
       <li>
-        {/* <NavLink
-      to="/movies"
-      className={styles.link}
-      activeclassname={styles.activeLink}
-    >
-      Movies
-    </NavLink> */}
+        <NavLink
+          to="/movies"
+          className={styles.link}
+          // activeClassName={styles.activeLink}
+        >
+          Movies
+        </NavLink>
       </li>
     </ul>
   </nav>

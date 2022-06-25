@@ -26,6 +26,11 @@ export function fetchMovieDetails(movieId) {
     `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`
   );
 }
+export function fetchMoviePoster(movieId) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}/movie/${movieId}?images?api_key==${API_KEY}&language=en-US`
+  );
+}
 
 export function fetchMovieCredits(movieId) {
   return fetchWithErrorHandling(

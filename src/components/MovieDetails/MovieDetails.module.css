@@ -1,0 +1,13 @@
+.listGenres {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.itemGenres {
+    margin-right: 10px;
+}
+.itemGenres:last-child {
+    margin-right: 0px;
+
+}

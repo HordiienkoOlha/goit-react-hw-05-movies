@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams  } from 'react-router-dom';
 import * as api from '../../services/api';
 
 import styles from './MovieDetails.module.css';
 
 export default function MovieDetails() {
   const [movies, setMovies] = useState([]);
+  const { movieId } = useParams();
+
+  const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+  const ANOTHER_IMG =  'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png'
 
   useEffect(() => {
-    api.fetchMovieDetails(453395).then(setMovies);
-  }, []);
+    api.fetchMovieDetails(movieId).then(setMovies);
+  }, [movieId]);
 
   const {
     poster_path,
@@ -20,14 +24,16 @@ export default function MovieDetails() {
     overview,
     genres,
   } = movies;
+  const poster = IMG_URL + poster_path
   return (
     <>
       <section>
-        <img
-          src={poster_path}
-          //   src={`https://api.themoviedb.org/3/movie/453395/images?api_key=${API_KEY}/${poster_path}`}
-          alt="poster"
-        ></img>
+        <div>
+          {/* <img { ? (src = { poster }) : (src = { ANOTHER_IMG }}) alt="Poster" />  */}
+          {poster_path ? (<img src={poster} alt="Poster"/> ):(<img src = { ANOTHER_IMG } alt="Poster"/>)}
+
+          {/* <img src={poster} alt="Poster"/> */}
+        </div>
         <ul>
           <li>
             <h3>

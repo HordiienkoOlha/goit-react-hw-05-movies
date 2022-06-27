@@ -17,8 +17,8 @@ export default function HomeView() {
           {moviesData.map(({ id, original_title, name }) => {
             return (
               <li key={id}>
-                <NavLink to={`/movies/${moviesData.id}`}>
-                  {original_title} {name}
+                <NavLink to={`/movies/${id}`}>
+                  <p>{original_title} {name}</p>
                 </NavLink>
               </li>
             );
@@ -31,3 +31,7 @@ export default function HomeView() {
 // <p>
 //   {original_title} {name}
 // </p>
+
+/* <img {!poster_path ? (src = { poster }) : (src = { ANOTHER_IMG }}) alt="Poster" /> */
+  // const ANOTHER_IMG =  'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png'
+  

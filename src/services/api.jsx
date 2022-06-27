@@ -1,3 +1,4 @@
+// export const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '90bfee2a572d35f95b357659a69aab32';
 
@@ -15,9 +16,9 @@ export function fetchTrendingMovies() {
   );
 }
 
-export function fetchSearchMovies() {
+export function fetchSearchMovies(movie) {
   return fetchWithErrorHandling(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=1`
+    `${BASE_URL}search/movie?api_key=${API_KEY}&query=${movie}&page=1`
   );
 }
 

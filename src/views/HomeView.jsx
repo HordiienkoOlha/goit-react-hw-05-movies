@@ -28,10 +28,3 @@ export default function HomeView() {
     </>
   );
 }
-// <p>
-//   {original_title} {name}
-// </p>
-
-/* <img {!poster_path ? (src = { poster }) : (src = { ANOTHER_IMG }}) alt="Poster" /> */
-  // const ANOTHER_IMG =  'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png'
-  

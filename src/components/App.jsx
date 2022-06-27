@@ -6,7 +6,6 @@ import HomeView from 'views/HomeView';
 import MovieDetails from './MovieDetails';
 
 export const App = () => {
-  // const { movieId } = useParams();
   return (
     <Container>
       <AppBar />
@@ -14,7 +13,7 @@ export const App = () => {
       {/* <MovieDetails /> */}
       <Routes>
         <Route path="/" exact element={<HomeView />} />
-        {/* <Route path="/movies" element={<Movies />} /> */}
+        {/* <Route path="/movies" exact element={<Movies />} /> */}
         {/* <Route path="/movies/453395" element={<MovieDetails />} /> */}
         <Route path="/movies/:movieId" element={<MovieDetails />} />
         {/* <Route path="/movies/:movieId/cast" element={<Cast />} /> */}

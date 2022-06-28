@@ -1,6 +1,7 @@
 // export const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '90bfee2a572d35f95b357659a69aab32';
+export const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 // https://api.themoviedb.org/3/trending/all/day?api_key=90bfee2a572d35f95b357659a69aab32
 async function fetchWithErrorHandling(url = '', config = {}) {
@@ -12,7 +13,7 @@ async function fetchWithErrorHandling(url = '', config = {}) {
 
 export function fetchTrendingMovies() {
   return fetchWithErrorHandling(
-    `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
+    `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
   );
 }
 

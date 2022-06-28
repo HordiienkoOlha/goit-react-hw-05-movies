@@ -4,7 +4,7 @@ import styles from './Navigation.module.css';
 
 const Navigation = () => {
 let activeStyle = {
-    textDecoration: "underline",
+    color: "blue",
   };
 
 return (

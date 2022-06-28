@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, useParams  } from 'react-router-dom';
 import * as api from '../../services/api';
 
+import Cast from '../Cast';
 import styles from './MovieDetails.module.css';
 
 export default function MovieDetails() {
@@ -46,10 +47,10 @@ export default function MovieDetails() {
 
   return (
     <>
-      <section>
+      <section className={styles.section}>
         <div>
           {poster_path ? (
-            <img src={poster} alt="Poster" />
+            <img src={poster} alt="Poster"width={200} />
           ) : (
             <img src={ANOTHER_IMG} alt="Poster" />
           )}
@@ -85,12 +86,13 @@ export default function MovieDetails() {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <NavLink to={`/movies/:{movieId}/cast}`}>Cast</NavLink>
+            <NavLink to={`/movies/${movieId}/cast}`}>Cast</NavLink>
           </li>
           <li>
-            <NavLink to={`/movies//movies/:{movieId}/reviews`}>Rewievs</NavLink>
+            <NavLink to={`/movies/${movieId}eviews`}>Rewievs</NavLink>
           </li>
         </ul>
+        <Cast />
       </section>
     </>
   );

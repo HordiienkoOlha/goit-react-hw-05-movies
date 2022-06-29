@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { NavLink, useParams  } from 'react-router-dom';
 import * as api from '../../services/api';
 
-import Cast from '../Cast';
+// import Cast from '../Cast';
+import Rewievs from '../Reviews/Reviews'
 import styles from './MovieDetails.module.css';
 
 export default function MovieDetails() {
@@ -95,7 +96,8 @@ export default function MovieDetails() {
             <NavLink to={`/movies/${movieId}eviews`}>Rewievs</NavLink>
           </li>
         </ul>
-        <Cast />
+        {/* <Cast /> */}
+        <Rewievs/>
       </section>
     </>
   );

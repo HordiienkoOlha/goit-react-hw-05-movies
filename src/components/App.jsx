@@ -26,7 +26,7 @@ export const App = () => {
         <Route path="/movies" exact element={<Movies/>} />
         <Route path="/movies/:movieId" element={<MovieDetails />} />
         <Route path="/movies/:movieId/cast" element={<Cast />} />
-        {/* <Route path="/movies/:movieId/reviews" element={<Reviews />} />{' '} */}
+        {/* <Route path="/movies/:movieId/reviews" element={<Reviews />} />{'We don't any reviews for this movie'} */}
         <Route path="*" element={<p>There's nothing here!</p>} />
       </Routes>
     </Container>

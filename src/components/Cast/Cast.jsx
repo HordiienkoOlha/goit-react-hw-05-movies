@@ -21,7 +21,7 @@ export default function Cast() {
 
   return (
     <>
-      <h2>Trending today</h2>
+      {/* <h2>Cast</h2> */}
       {!cast && <div><Loader/></div>}
         {cast && (
               <ul className={styles.list}>

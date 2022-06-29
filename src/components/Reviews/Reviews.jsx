@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import * as api from '../../services/api';
 
@@ -8,30 +8,32 @@ export default function Reviews() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    if (reviews === null) {
-      return
-    }
+    // if (reviews === null) {
+    //   return;
+    // }
     api.fetchMovieReviews(movieId).then(setReviows);
-
-  }, [reviews, movieId]);
+  }, [ movieId]);
   const reviewsData = reviews.results;
+  const totalPages = reviews.total_pages;
+  const condition = totalPages > 0 && reviewsData
 
-    return (
-        <section>
-            <h2>Review</h2>
-            <ul>
-            {reviewsData ? (reviewsData.map(({author, content})=> {
-              return(
-                <li key={author}>
-                  <h3>{author}</h3>
-                  <p>{content}</p>
-                  </li>
-              )
-            })) : (<p>We don't any reviews for this movie</p>)}
-                    
-            </ul>
 
-        </section>
-    )
-};
-
+  return (
+    <section>
+      {condition ? (
+        <ul>
+          {reviewsData.map(({ author, content }) => {
+            return (
+              <li key={author}>
+                <h3>{author}</h3>
+                <p>{content}</p>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p>We don't have any reviews for this movie</p>
+      )}
+    </section>
+  );
+}

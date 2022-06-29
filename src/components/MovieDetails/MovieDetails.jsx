@@ -13,11 +13,11 @@ export default function MovieDetails() {
 
   useEffect(() => {
     setLoading(true)
-    if (moviesDetails === null) {
-      return setMoviesDetails([]);
-    }
+    // if (moviesDetails === null) {
+    //   return setMoviesDetails([]);
+    // }
     api.fetchMovieDetails(movieId).then(setMoviesDetails).finally(setLoading(false))
-  }, [moviesDetails, movieId]);
+  }, [ movieId]);
 
   const {
     poster_path,

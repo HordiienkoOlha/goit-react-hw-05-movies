@@ -32,14 +32,17 @@ export default function MovieDetails() {
   const poster = IMG_URL + poster_path;
 
   const releaseTranform = () => {
+        if (release_date === null) {
+      return;
+    }
     const releaseDate = String(release_date).slice(0, 4);
     const releaseYear = '(' + releaseDate + ')';
     return releaseYear;
   };
   const voteAverageTransform = ()=> {
-    // if (vote_average === null) {
-    //   return;
-    // }
+    if (vote_average === null) {
+      return;
+    }
     const voteAverage = parseInt(vote_average*10)
     const votePercentage = String(voteAverage) + '%'
     return votePercentage;

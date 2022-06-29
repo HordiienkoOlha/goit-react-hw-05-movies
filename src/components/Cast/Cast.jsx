@@ -6,38 +6,39 @@ import * as api from '../../services/api';
 import styles from './Cast.module.css';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+const ANOTHER_AVATAR = 'https://www.pinpng.com/pngs/m/341-3415688_no-avatar-png-transparent-png.png'
 
 export default function Cast() {
     const { movieId } = useParams();
   const [moviesCast, setMoviesCast] = useState([]);
 //   const { movieId } = useParams();
   useEffect(() => {
+    if (moviesCast === null) {
+      return setMoviesCast([]);
+    }
     api.fetchMovieCredits(movieId).then(setMoviesCast);
 
-  }, [movieId]);
+  }, [moviesCast, movieId]);
   const cast = moviesCast.cast;
 
   return (
     <>
       <h2>Trending today</h2>
-        {/* <p>{castData.cast_id}</p> */}
         {cast && (
               <ul className={styles.list}>
-                {cast.map(({ id, name, character, profile_path }) => {
+                {cast.map(({ cast_id, name, character, profile_path }) => {
                     const poster = IMG_URL + profile_path;
                   return (
-                    <li className={styles.item} key={id}>
-                        <img src={poster} alt="Poster"width={80} />
+                    <li className={styles.item} key={cast_id}>
+                        {profile_path ? (<img src={poster} alt="avatar"width={80} />) : (<img src={ANOTHER_AVATAR} alt="avatar"width={80} />)}
                         <h3>{name}</h3>
-                        <p>{character}</p>
+                        <p>Character: {character}</p>
                       
                     </li>
                   );
                 })}
               </ul>
             )}
-
-
     </>
   )}
 

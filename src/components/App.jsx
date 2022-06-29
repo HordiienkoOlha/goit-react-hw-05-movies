@@ -7,6 +7,7 @@ import HomeView from 'views/HomeView';
 import MovieDetails from './MovieDetails';
 import Movies from './Movies';
 import Cast from './Cast';
+import Reviews from './Reviews';
 
 export const App = () => {
   // const [queryInput, setQueryInput] = useState('');
@@ -22,12 +23,14 @@ export const App = () => {
       {/* <HomeView /> */}
       {/* <MovieDetails /> */}
       <Routes>
-        <Route path="/" exact element={<HomeView />} />
-        <Route path="/movies" exact element={<Movies/>} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
-        <Route path="/movies/:movieId/cast" element={<Cast />} />
-        {/* <Route path="/movies/:movieId/reviews" element={<Reviews />} />{'We don't any reviews for this movie'} */}
-        <Route path="*" element={<p>There's nothing here!</p>} />
+        <Route path="/" element={<App />}/>
+          <Route index  element={<HomeView />} />
+          <Route path="movies" exact element={<Movies/>} />
+            <Route path="/movies/:movieId" element={<MovieDetails />} />
+              
+          <Route path="/movies/:movieId/cast" element={<Cast />} />
+        <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+        <Route index  element={<p>There's nothing here!</p>} />
       </Routes>
     </Container>
   );

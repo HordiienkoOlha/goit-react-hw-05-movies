@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
-// import { NavLink } from 'react-router-dom';
 import { useParams  } from 'react-router-dom';
 import * as api from '../../services/api';
 
+import { IMG_URL, ANOTHER_AVATAR } from 'constants/constants';
 import styles from './Cast.module.css';
+import Loader from 'components/Loader';
 
-const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-const ANOTHER_AVATAR = 'https://www.pinpng.com/pngs/m/341-3415688_no-avatar-png-transparent-png.png'
 
 export default function Cast() {
-    const { movieId } = useParams();
   const [moviesCast, setMoviesCast] = useState([]);
-//   const { movieId } = useParams();
+  const { movieId } = useParams();
   useEffect(() => {
     if (moviesCast === null) {
       return setMoviesCast([]);
@@ -24,6 +22,7 @@ export default function Cast() {
   return (
     <>
       <h2>Trending today</h2>
+      {!cast && <div><Loader/></div>}
         {cast && (
               <ul className={styles.list}>
                 {cast.map(({ cast_id, name, character, profile_path }) => {

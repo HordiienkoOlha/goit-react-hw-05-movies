@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useParams  } from 'react-router-dom';
+import { Link, useParams  } from 'react-router-dom';
 import * as api from '../../services/api';
 
-// import Cast from '../Cast';
+import Cast from '../Cast';
 import Rewievs from '../Reviews/Reviews'
+import { IMG_URL, ANOTHER_IMG } from 'constants/constants';
 import styles from './MovieDetails.module.css';
+import Loader from 'components/Loader';
 
 export default function MovieDetails() {
   const [moviesDetails, setMoviesDetails] = useState([]);
+  const [loading, setLoading] = useState(false)
   const { movieId } = useParams();
 
-  const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-  const ANOTHER_IMG =
-    'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';
-
   useEffect(() => {
+    setLoading(true)
     if (moviesDetails === null) {
       return setMoviesDetails([]);
     }
-    api.fetchMovieDetails(movieId).then(setMoviesDetails);
+    api.fetchMovieDetails(movieId).then(setMoviesDetails).finally(setLoading(false))
   }, [moviesDetails, movieId]);
 
   const {
@@ -52,6 +52,7 @@ export default function MovieDetails() {
   return (
     <>
       <section className={styles.section}>
+        {loading && <Loader/>}
         <div>
           {poster_path ? (
             <img src={poster} alt="Poster"width={200} />
@@ -90,13 +91,13 @@ export default function MovieDetails() {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <NavLink to={`/movies/${movieId}/cast}`}>Cast</NavLink>
+            <Link to={`/movies/${movieId}/cast}`}>Cast</Link>
           </li>
           <li>
-            <NavLink to={`/movies/${movieId}eviews`}>Rewievs</NavLink>
+            <Link to={`/movies/${movieId}/reviews`}>Rewievs</Link>
           </li>
         </ul>
-        {/* <Cast /> */}
+        <Cast />
         <Rewievs/>
       </section>
     </>

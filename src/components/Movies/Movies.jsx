@@ -44,6 +44,7 @@ const onChange=(event)=> {
 }
 
   return (
+    <>
     <header className={styles.searchbar}>
       <form className={styles.form} onSubmit={onChange}>
         <input
@@ -62,5 +63,7 @@ const onChange=(event)=> {
         </button>
       </form>
     </header>
+    </>
+    
   );
 }

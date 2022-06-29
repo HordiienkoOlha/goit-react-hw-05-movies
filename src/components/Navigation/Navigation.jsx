@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
 const Navigation = () => {
@@ -19,7 +19,7 @@ return (
               isActive ? activeStyle : undefined
             }
           >
-                Home
+          Home
         </NavLink>
       </li>
       <li>
@@ -33,6 +33,7 @@ return (
           Movies
         </NavLink>
       </li>
+      <Outlet/>
     </ul>
   </nav>
   )

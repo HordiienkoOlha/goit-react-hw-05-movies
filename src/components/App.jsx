@@ -1,4 +1,4 @@
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 // import { useState} from 'react';
 
 import Container from './Container';
@@ -19,18 +19,15 @@ export const App = () => {
   return (
     <Container>
       <AppBar />
-      {/* <Cast /> */}
-      {/* <HomeView /> */}
-      {/* <MovieDetails /> */}
       <Routes>
-        <Route path="/" element={<App />}/>
-          <Route index  element={<HomeView />} />
-          <Route path="movies" exact element={<Movies/>} />
-            <Route path="/movies/:movieId" element={<MovieDetails />} />
-              
-          <Route path="/movies/:movieId/cast" element={<Cast />} />
-        <Route path="/movies/:movieId/reviews" element={<Reviews />} />
-        <Route index  element={<p>There's nothing here!</p>} />
+        {/* <Route path="/" element={<AppBar />} /> */}
+        <Route index element={<HomeView />} />
+        <Route path="movies" exact element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
+        <Route index element={<p>There's nothing here!</p>} />
       </Routes>
     </Container>
   );

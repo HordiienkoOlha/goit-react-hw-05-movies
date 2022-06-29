@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams  } from 'react-router-dom';
+import { NavLink, Outlet, useParams  } from 'react-router-dom';
 import * as api from '../../services/api';
 
-import Cast from '../Cast';
-import Rewievs from '../Reviews/Reviews'
 import { IMG_URL, ANOTHER_IMG } from 'constants/constants';
 import styles from './MovieDetails.module.css';
 import Loader from 'components/Loader';
@@ -91,14 +89,13 @@ export default function MovieDetails() {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <Link to={`/movies/${movieId}/cast}`}>Cast</Link>
+            <NavLink to={`/movies/${movieId}/cast`}>Cast</NavLink>
           </li>
           <li>
-            <Link to={`/movies/${movieId}/reviews`}>Rewievs</Link>
+            <NavLink to={`/movies/${movieId}/reviews`}>Reviews</NavLink>
           </li>
         </ul>
-        <Cast />
-        <Rewievs/>
+        <Outlet />
       </section>
     </>
   );

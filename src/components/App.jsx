@@ -18,9 +18,9 @@ export const App = () => {
   // };
   return (
     <Container>
-      <AppBar />
+      {/* <AppBar /> */}
       <Routes>
-        {/* <Route path="/" element={<AppBar />} /> */}
+        <Route path="/" element={<AppBar />} />
         <Route index element={<HomeView />} />
         <Route path="movies" exact element={<Movies />} />
         <Route path="/movies/:movieId" element={<MovieDetails />}>

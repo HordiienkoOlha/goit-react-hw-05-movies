@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useParams  } from 'react-router-dom';
+import { NavLink, Outlet, useParams, Link  } from 'react-router-dom';
+import { BiArrowBack } from "react-icons/bi"
 import * as api from '../../services/api';
 
 import { IMG_URL, ANOTHER_IMG } from 'constants/constants';
@@ -49,7 +50,9 @@ export default function MovieDetails() {
 
   return (
     <>
+    <Link to="/"><BiArrowBack/>Go back</Link>
       <section className={styles.section}>
+      
         {loading && <Loader/>}
         <div>
           {poster_path ? (

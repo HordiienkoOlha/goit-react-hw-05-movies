@@ -5,61 +5,45 @@ import { BsSearch } from 'react-icons/bs';
 
 // import * as api from '../../services/api';
 // import Loader from 'components/Loader';
+import MoviesSearchList from "components/MoviesSearchList/MoviesSearchList";
 import styles from './SearchMoviesBar.module.css';
 
 
 export default function SearchMoviesBar() {
-    // const [queryInput, setQueryInput] = useState('');
     let [searchParams, setSearchParams] = useSearchParams();
+    const queryInput = searchParams.get("query")
+    const onSearchHandle=(event) => {
+        const query = event.target.value;
+        if (query) {
+            setSearchParams({ query });
+        } else {
+            setSearchParams({});
+        }
+        }
+        console.log(queryInput)
 
-    // const handleNameChange = event => {
-    //   setQueryInput(event.currentTarget.value.toLowerCase());
-      
-    // };
-  
-    // const onChange = event => {
-    //   event.preventDefault();
-  
-    //   if (queryInput.trim() === '') {
-    //     toast('Please enter search query!', {
-    //       position: 'top-right',
-    //       autoClose: 5000,
-    //       hideProgressBar: false,
-    //       closeOnClick: true,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //     });
-
-  
-    //   onSubmit(queryInput);
-    //   setQueryInput('');
-    // };
-  return (
+    return (
     <>
-      <section className={styles.searchbar}>
-        <div className={styles.form}>
-        {/* <form className={styles.form} onSubmit={onChange}> */}
+        <section className={styles.searchbar}>
+        <form className={styles.form} >
         <input
-         className={styles.input}
-          value={searchParams.get("filter") || ""}
-          onChange={(event) => {
-            let filter = event.target.value;
-            if (filter) {
-              setSearchParams({ filter });
-            } else {
-              setSearchParams({});
-            }
-          }}
+            className={styles.input}
+            value={queryInput || ""}
+            onChange={onSearchHandle}
         />
-          <button type="submit" aria-label="Search" className={styles.button}>
+            <button type="submit" aria-label="Search" className={styles.button}>
             <span className={styles.buttonLabel}>
-              <BsSearch />
+                <BsSearch />
             </span>
-          </button>
-        {/* </form> */}
-        </div>
-      </section>
+            </button>
+        </form>
+        </section>
+        <section>
+        <MoviesSearchList query={queryInput}/>
+            {/* {query && <MoviesSearchList/> */}
+
+            {/* } */}
+        </section>
     </>
-  );
+    );
 }

@@ -2,7 +2,7 @@
 // import { NavLink } from 'react-router-dom';
 
 
-import MoviesSearchList from 'components/MoviesSearchList';
+// import MoviesSearchList from 'components/MoviesSearchList';
 import SearchMoviesBar from 'components/SearchMoviesBar';
 // import { NavLink } from 'react-router-dom';
 // import { toast } from 'react-toastify';
@@ -17,7 +17,7 @@ export default function Movies() {
   return (
     <>
       <SearchMoviesBar/>
-      <MoviesSearchList/>
+      
     </>
     
   );

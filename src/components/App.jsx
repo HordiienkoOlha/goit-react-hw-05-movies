@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 // import { useState} from 'react';
 
-import Container from './Container';
+// import Container from './Container';
 import AppBar from './AppBar';
 import HomeView from 'views/HomeView';
 import MovieDetails from './MovieDetails';
@@ -17,18 +17,18 @@ export const App = () => {
   //   setMovies([]);
   // };
   return (
-    <Container>
-      {/* <AppBar /> */}
+    // <Container>
       <Routes>
-        <Route path="/" element={<AppBar />} />
-        <Route index element={<HomeView />} />
-        <Route path="movies" exact element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
+        <Route path="/" element={<AppBar />} >
+          <Route index element={<HomeView />} />
+          <Route path="movies" exact element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<p>There's nothing here!</p>} />
         </Route>
-        <Route index element={<p>There's nothing here!</p>} />
       </Routes>
-    </Container>
+    // </Container>
   );
 };

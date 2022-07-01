@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams  } from 'react-router-dom';
-import * as api from '../../services/api';
 
+import * as api from '../../services/api';
 import { IMG_URL, ANOTHER_AVATAR } from 'constants/constants';
 import styles from './Cast.module.css';
 import Loader from 'components/Loader';
@@ -11,12 +11,8 @@ export default function Cast() {
   const [moviesCast, setMoviesCast] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
-    if (moviesCast === null) {
-      return setMoviesCast([]);
-    }
     api.fetchMovieCredits(movieId).then(setMoviesCast);
-
-  }, [moviesCast, movieId]);
+  }, [ movieId]);
   const cast = moviesCast.cast;
 
   return (

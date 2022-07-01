@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useParams, Link  } from 'react-router-dom';
+import { NavLink, Outlet, useParams, Link,  } from 'react-router-dom';
 import { BiArrowBack } from "react-icons/bi"
 import * as api from '../../services/api';
 
@@ -14,9 +14,6 @@ export default function MovieDetails() {
 
   useEffect(() => {
     setLoading(true)
-    // if (moviesDetails === null) {
-    //   return setMoviesDetails([]);
-    // }
     api.fetchMovieDetails(movieId).then(setMoviesDetails).finally(setLoading(false))
   }, [ movieId]);
 
@@ -29,6 +26,7 @@ export default function MovieDetails() {
     overview,
     genres,
   } = moviesDetails;
+  
   const poster = IMG_URL + poster_path;
 
   const releaseTranform = () => {

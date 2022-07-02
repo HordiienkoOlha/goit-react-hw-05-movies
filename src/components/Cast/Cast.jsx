@@ -8,16 +8,18 @@ import Loader from 'components/Loader';
 
 
 export default function Cast() {
+
   const [moviesCast, setMoviesCast] = useState([]);
   const { movieId } = useParams();
+
   useEffect(() => {
     api.fetchMovieCredits(movieId).then(setMoviesCast);
   }, [ movieId]);
+  
   const cast = moviesCast.cast;
 
   return (
     <>
-      {/* <h2>Cast</h2> */}
       {!cast && <div><Loader/></div>}
         {cast && (
               <ul className={styles.list}>
@@ -28,7 +30,6 @@ export default function Cast() {
                         {profile_path ? (<img src={poster} alt="avatar"width={80} />) : (<img src={ANOTHER_AVATAR} alt="avatar"width={80} />)}
                         <h3>{name}</h3>
                         <p>Character: {character}</p>
-                      
                     </li>
                   );
                 })}
@@ -36,19 +37,3 @@ export default function Cast() {
             )}
     </>
   )}
-
-
-//     <ul>
-//       {moviesData.map(({ id  }) => {
-//         return (
-//           <li key={id}>
-//             {/* <NavLink to={`/movies/${id}`}>
-//               <p>{original_title} {name}</p>
-//             </NavLink> */}
-//             <p>id </p>
-            
-//           </li>
-//         );
-//       })}
-//     </ul>
-//   )}

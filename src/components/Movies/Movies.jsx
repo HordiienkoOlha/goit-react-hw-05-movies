@@ -1,52 +1,63 @@
-// import { useState} from 'react';
-import { useSearchParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useSearchParams, Link } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 import { BsSearch } from 'react-icons/bs';
 
-// import * as api from '../../services/api';
+import * as api from '../../services/api';
 // import Loader from 'components/Loader';
-import MoviesSearchList from "components/MoviesSearchList/MoviesSearchList";
 import styles from './Movies.module.css';
 
-
 export default function Movies() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const queryInput = searchParams.get("query")
-  const onSearchHandle=(event) => {
-      const query = event.target.value;
-      if (query) {
-          setSearchParams({ query });
-      } else {
-          setSearchParams({});
-      }
-      }
-      const onSearch=()=>{
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [movies, setMovies] = useState([]);
 
-      }
+    const handleSubmit = event => {
+        event.preventDefault();
+        setSearchParams({query: event.currentTarget.elements.query.value})
+        
+    }
+    const query = searchParams.get("query")
+    // console.log(queryInput);
+    useEffect(()=> {
+        if(query){
+            api.fetchSearchMovies(query).then(setMovies);
+        }
+    }, [query])
+    const moviesData = movies.results;
 
-  return (
-  <>
-      <section className={styles.searchbar}>
-      {/* <form className={styles.form} onSubmit={onSearchHandle}> */}
-      <form className={styles.form} onSubmit={onSearch}>
-      <input
-          className={styles.input}
-          value={queryInput || ""}
-          onChange={onSearchHandle}
-      />
-          <button type="submit" aria-label="Search" className={styles.button}>
-          <span className={styles.buttonLabel}>
-              <BsSearch />
-          </span>
-          </button>
-      </form>
-      </section>
-      <section>
-        {queryInput && <MoviesSearchList/>}
-          {/* {query && <MoviesSearchList/> */}
+    return (
+    <>
+        <section className={styles.searchbar}>
+            
+        <form className={styles.form} onSubmit={handleSubmit}>
+            <input
+            type="text"
+            name="query"
+            className={styles.input}
+            />
+            <button type="submit" aria-label="Search" className={styles.button}>
+            <span className={styles.buttonLabel}>
+                <BsSearch />
+            </span>
+            </button>
+        </form>
+        </section>
+        <section>
+        {moviesData && (
+            <ul>
+            {moviesData.map(({ id, original_title, name}) => {
+                return (
+                <li key={id}>
+                    <Link to={`/movies/${id}`}>
+                    <p>{original_title} {name}</p>
+                    </Link>
+                </li>
+                );
+            })}
+            </ul>
+        )}
 
-          {/* } */}
-      </section>
-  </>
-  );
+        </section>
+    </>
+    );
 }

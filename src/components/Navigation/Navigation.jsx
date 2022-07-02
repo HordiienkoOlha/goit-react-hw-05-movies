@@ -3,10 +3,6 @@ import { NavLink} from 'react-router-dom';
 import styles from './Navigation.module.css';
 
 const Navigation = () => {
-let activeStyle = {
-    color: "blue",
-  };
-
 return (
       <nav>
     <ul className={styles.list}>
@@ -14,9 +10,8 @@ return (
         <NavLink
           exact="true"
           to="/"
-          className={styles.link}
-          style={({ isActive }) =>
-              isActive ? activeStyle : undefined
+          className={({ isActive }) =>
+              isActive ? styles['active-link'] : styles.link
             }
           >
           Home
@@ -25,15 +20,13 @@ return (
       <li>
         <NavLink
           to="/movies"
-          className={styles.link}
-            style={({ isActive }) =>
-              isActive ? activeStyle : undefined
+          className={({ isActive }) =>
+              isActive ? styles['active-link'] : styles.link
             }
           >
           Movies
         </NavLink>
       </li>
-
     </ul>
   </nav>
   )

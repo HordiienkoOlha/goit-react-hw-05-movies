@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as api from '../services/api';
 
 import Loader from 'components/Loader';
@@ -20,9 +20,9 @@ export default function HomeView() {
           {moviesData.map(({ id, original_title, name }) => {
             return (
               <li key={id}>
-                <NavLink to={`/movies/${id}`}>
+                <Link to={`/movies/${id}`}>
                   <p>{original_title} {name}</p>
-                </NavLink>
+                </Link>
               </li>
             );
           })}

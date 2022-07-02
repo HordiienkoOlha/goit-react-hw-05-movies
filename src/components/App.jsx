@@ -1,23 +1,24 @@
 import { Route, Routes } from 'react-router-dom';
-// import { useState} from 'react';
+import {lazy} from 'react';
 
-// import Container from './Container';
-import AppBar from './AppBar';
-import HomeView from 'views/HomeView';
-import MovieDetails from './MovieDetails';
-import Movies from './Movies';
-import Cast from './Cast';
-import Reviews from './Reviews';
+
+const AppBar = lazy(() => import('./AppBar/AppBar'));
+const HomeView = lazy(() => import('../views/HomeView'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('./Movies/Movies'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+// import AppBar from './AppBar';
+// import HomeView from 'views/HomeView';
+// import MovieDetails from './MovieDetails';
+// import Movies from './Movies';
+// import Cast from './Cast';
+// import Reviews from './Reviews';
+
 
 export const App = () => {
-  // const [queryInput, setQueryInput] = useState('');
-  // const [movies, setMovies] = useState([]);
-  // const onSearch = queryInput => {
-  //   setQueryInput(queryInput);
-  //   setMovies([]);
-  // };
   return (
-    // <Container>
+    // <Suspense fallback={<Loader/>}>
       <Routes>
         <Route path="/" element={<AppBar />} >
           <Route index element={<HomeView />} />
@@ -29,6 +30,6 @@ export const App = () => {
           <Route path="*" element={<p>There's nothing here!</p>} />
         </Route>
       </Routes>
-    // </Container>
+    // </Suspense>
   );
 };

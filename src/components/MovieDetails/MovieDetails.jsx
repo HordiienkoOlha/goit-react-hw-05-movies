@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useParams, Link,  } from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation, useNavigate,  } from 'react-router-dom';
 import { BiArrowBack } from "react-icons/bi"
 import * as api from '../../services/api';
 
@@ -11,6 +11,8 @@ export default function MovieDetails() {
   const [moviesDetails, setMoviesDetails] = useState([]);
   const [loading, setLoading] = useState(false)
   const { movieId } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true)
@@ -48,7 +50,7 @@ export default function MovieDetails() {
 
   return (
     <>
-    <Link to="/"><BiArrowBack/>Go back</Link>
+    <button onClick={(()=> navigate(location?.state?.from??"/"))}><BiArrowBack/>Go back</button>
       <section className={styles.section}>
       
         {loading && <Loader/>}
@@ -90,10 +92,10 @@ export default function MovieDetails() {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <NavLink to={`/movies/${movieId}/cast`}>Cast</NavLink>
+            <Link state={{from:location.pathname}} to={`/movies/${movieId}/cast`}>Cast</Link>
           </li>
           <li>
-            <NavLink to={`/movies/${movieId}/reviews`}>Reviews</NavLink>
+            <Link state={{from:location.pathname}} to={`/movies/${movieId}/reviews`}>Reviews</Link>
           </li>
         </ul>
         <Outlet />

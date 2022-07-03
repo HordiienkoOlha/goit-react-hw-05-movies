@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
-// import { toast } from 'react-toastify';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 
 import * as api from '../../services/api';
-// import Loader from 'components/Loader';
 import styles from './Movies.module.css';
 
 export default function Movies() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [movies, setMovies] = useState([]);
+    const location = useLocation();
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -17,7 +16,6 @@ export default function Movies() {
         
     }
     const query = searchParams.get("query")
-    // console.log(queryInput);
     useEffect(()=> {
         if(query){
             api.fetchSearchMovies(query).then(setMovies);
@@ -48,7 +46,7 @@ export default function Movies() {
             {moviesData.map(({ id, original_title, name}) => {
                 return (
                 <li key={id}>
-                    <Link to={`/movies/${id}`}>
+                    <Link  state={{ from: location.pathname + location.search }} to={`/movies/${id}`}>
                     <p>{original_title} {name}</p>
                     </Link>
                 </li>

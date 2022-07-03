@@ -93,10 +93,10 @@ export default function MovieDetails() {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <Link state={{from:location?.state?.from ?? '/'}} to={`/movies/${movieId}/cast`}>Cast</Link>
+            <Link state={{from:location.pathname }} to={`/movies/${movieId}/cast`}>Cast</Link>
           </li>
           <li>
-            <Link state={{from:location?.state?.from ?? '/'}} to={`/movies/${movieId}/reviews`}>Reviews</Link>
+            <Link state={{from:location.pathname}} to={`/movies/${movieId}/reviews`}>Reviews</Link>
           </li>
         </ul>
         <Outlet />

@@ -3,8 +3,8 @@ import { useParams  } from 'react-router-dom';
 
 import * as api from '../../services/api';
 import { IMG_URL, ANOTHER_AVATAR } from 'constants/constants';
-import styles from './Cast.module.css';
 import Loader from 'components/Loader';
+import styles from './Cast.module.css';
 
 
 export default function Cast() {

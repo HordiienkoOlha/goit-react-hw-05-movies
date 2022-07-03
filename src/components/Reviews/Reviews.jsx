@@ -9,15 +9,12 @@ export default function Reviews() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    // if (reviews === null) {
-    //   return;
-    // }
     api.fetchMovieReviews(movieId).then(setReviows);
   }, [ movieId]);
+  
   const reviewsData = reviews.results;
   const totalPages = reviews.total_pages;
   const condition = totalPages > 0 && reviewsData
-
 
   return (
     <>

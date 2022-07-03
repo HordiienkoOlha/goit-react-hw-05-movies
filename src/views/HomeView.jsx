@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import * as api from '../services/api';
 
+import * as api from '../services/api';
 import Loader from 'components/Loader';
 
 export default function HomeView() {

@@ -4,8 +4,8 @@ import { BiArrowBack } from "react-icons/bi"
 import * as api from '../../services/api';
 
 import { IMG_URL, ANOTHER_IMG } from 'constants/constants';
-import styles from './MovieDetails.module.css';
 import Loader from 'components/Loader';
+import styles from './MovieDetails.module.css';
 
 export default function MovieDetails() {
 

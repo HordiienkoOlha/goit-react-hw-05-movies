@@ -28,6 +28,3 @@ export async function fetchMovieReviews(movieId) {
   const response = await axios.get(`${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US`);
   return response.data;
 }
-
-// const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=90bfee2a572d35f95b357659a69aab32&query=cat&page=1`);
-

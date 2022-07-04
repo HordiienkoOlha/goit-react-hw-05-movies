@@ -48,10 +48,9 @@ export default function MovieDetails() {
     const votePercentage = String(voteAverage) + '%'
     return votePercentage;
   }
-
   return (
     <>
-    <button onClick={(()=> navigate(location?.state?.from??"/"))}><BiArrowBack/>Go back</button>
+    <button onClick={(()=> navigate(-1??"/"))}><BiArrowBack/>Go back</button>
       <section className={styles.section}>
       
         {loading && <Loader/>}

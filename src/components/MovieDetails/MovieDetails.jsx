@@ -50,7 +50,7 @@ export default function MovieDetails() {
   }
   return (
     <>
-    <button onClick={(()=> navigate(-1??"/"))}><BiArrowBack/>Go back</button>
+    <button onClick={(()=> navigate(location?.state?.from??"/"))}><BiArrowBack/>Go back</button>
       <section className={styles.section}>
       
         {loading && <Loader/>}
@@ -92,10 +92,10 @@ export default function MovieDetails() {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <Link state={{from:location.pathname }} to={`/movies/${movieId}/cast`}>Cast</Link>
+            <Link state={location.state} to={`/movies/${movieId}/cast`}>Cast</Link>
           </li>
           <li>
-            <Link state={{from:location.pathname}} to={`/movies/${movieId}/reviews`}>Reviews</Link>
+            <Link state={location.state} to={`/movies/${movieId}/reviews`}>Reviews</Link>
           </li>
         </ul>
         <Outlet />

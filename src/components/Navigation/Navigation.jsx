@@ -9,7 +9,7 @@ const Navigation = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.icon}>
-        <Link exact="true" to="/">
+        <Link  to="/">
           <IconContext.Provider
             value={{ color: '#1e496d', style: { verticalAlign: 'middle' } }}
           >

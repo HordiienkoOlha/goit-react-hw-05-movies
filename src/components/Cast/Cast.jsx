@@ -27,9 +27,9 @@ export default function Cast() {
                     const poster = IMG_URL + profile_path;
                   return (
                     <li className={styles.item} key={cast_id}>
-                        {profile_path ? (<img src={poster} alt="avatar"width={80} />) : (<img src={ANOTHER_AVATAR} alt="avatar"width={80} />)}
-                        <h3>{name}</h3>
-                        <p>Character: {character}</p>
+                        {profile_path ? (<img src={poster} alt="avatar" width={400} />) : (<img src={ANOTHER_AVATAR} alt="avatar"width={80} />)}
+                        <h3 className={styles.title}>{name}</h3>
+                        <p className={styles.text}>Character: {character}</p>
                     </li>
                   );
                 })}

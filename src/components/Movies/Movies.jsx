@@ -32,7 +32,8 @@ export default function Movies() {
             <input
             type="text"
             name="query"
-            className={styles.input}
+                        className={styles.input}
+                        placeholder="Search film here..."
             />
             <button type="submit" aria-label="Search" className={styles.button}>
             <span className={styles.buttonLabel}>
@@ -49,7 +50,7 @@ export default function Movies() {
                 return (
                 <li key={id} className={styles.item}>
                     <Link  state={{ from: location.pathname + location.search }} to={`/movies/${id}`}>
-                            <img src={poster} alt={original_title} />
+                            <img src={poster} alt={original_title}  />
                             <p className={styles.text}>{original_title } {name}</p>
                     </Link>
                 </li>

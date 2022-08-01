@@ -1,0 +1,18 @@
+.container {
+    width: 1200px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+}
+
+.title{
+    text-align: center;
+        margin-right: 0;
+    
+        color: var(--primary-white-color);
+        font-weight: 900;
+        font-size: 44px;
+        line-height: 1.36;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+}

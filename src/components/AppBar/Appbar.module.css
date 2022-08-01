@@ -1,0 +1,12 @@
+.container {
+    width: 1200px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+  }
+
+.header{
+    padding-top: 24px;
+        padding-bottom: 25px;
+        /* border-bottom: 1px solid #ececec; */
+}

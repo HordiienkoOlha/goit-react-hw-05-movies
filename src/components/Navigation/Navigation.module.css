@@ -1,15 +1,29 @@
-.list {
+.nav{
+    display: flex;
+      align-items: center;
+}.list {
+  color: var(--primary-black-color);
+  font-family: Raleway;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.19;
     display: flex;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.icon{
+  color: var(--icon-color);
+  vertical-align: bottom;
+  /* padding-top: 7px; */
+  margin-left: 20px;
 }
 .link {
   display: inline-block;
   text-decoration: none;
   padding: 12px;
   font-weight: 500;
-  color: #2a363b;
+  color: var(--primary-text-color);
   font-size: 18px;
 }
 
@@ -22,5 +36,5 @@
 
 .active-link{
   composes: link;
-  color: blue;
+  color: var(--accent-color);
 }

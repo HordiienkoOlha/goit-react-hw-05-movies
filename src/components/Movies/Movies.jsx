@@ -3,6 +3,7 @@ import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 
 import * as api from '../../services/api';
+import { IMG_URL } from 'constants/constants';
 import styles from './Movies.module.css';
 
 export default function Movies() {
@@ -42,12 +43,14 @@ export default function Movies() {
         </section>
         <section>
         {moviesData && (
-            <ul>
-            {moviesData.map(({ id, original_title, name}) => {
+            <ul className={styles.list}>
+                        {moviesData.map(({ id, original_title, name, backdrop_path }) => {
+                const poster = IMG_URL + backdrop_path;
                 return (
-                <li key={id}>
+                <li key={id} className={styles.item}>
                     <Link  state={{ from: location.pathname + location.search }} to={`/movies/${id}`}>
-                    <p>{original_title} {name}</p>
+                            <img src={poster} alt={original_title} />
+                            <p className={styles.text}>{original_title } {name}</p>
                     </Link>
                 </li>
                 );

@@ -8,7 +8,6 @@
   --primary-bg-color: 	#160e11;
   --title-text-color: 	#5d4035;
   --primary-white-color: #ffffff;
-  --section-bg-colr: #1e496d;
   --primary-black-color: #000000;
   --hero-bg-color: #2f303a;
   --footer-contacts-color: rgba(255, 255, 255, 0.6);
@@ -44,7 +43,6 @@ body {
   background-color: var(--primary-bg-color);
   color: var(--primary-text-color);
 }
-
 
 
 a, li {

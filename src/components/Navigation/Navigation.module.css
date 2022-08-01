@@ -1,15 +1,22 @@
 .nav{
     display: flex;
       align-items: center;
-}.list {
+}
+.list {
+
+
   color: var(--primary-black-color);
   font-family: Raleway;
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
+
     display: flex;
-  margin: 0;
-  padding: 0;
+    justify-content: space-around;
+      margin: auto;
+      align-items: center;
+  /* margin: 0; */
+  /* padding: 0; */
   list-style: none;
 }
 .icon{
@@ -27,7 +34,9 @@
   font-size: 18px;
 }
 
-
+.movie {
+margin-left: 50px;
+}
 /* .link{
   color:black;
   text-decoration: none;
